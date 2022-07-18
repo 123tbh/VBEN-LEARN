@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs-extra';
 import inquirer from 'inquirer';
 import chalk from 'chalk';
-import pkg from '../../package.json';
+import pkg from '../../../package.json';
 
 async function generateIcon() {
   // ↓这里面有所有Iconify的图标
@@ -83,4 +83,3 @@ async function generateIcon() {
 }
 
 generateIcon();
-

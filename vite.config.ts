@@ -6,8 +6,8 @@ import pkg from './package.json';
 
 // import { generateModifyVars } from './build/config/themeConfig';
 // import { createProxy } from './build/vite/proxy';
-// import { wrapperEnv } from './build/utils';
-// import { createVitePlugins } from './build/vite/plugin';
+import { wrapperEnv } from './build/utils';
+import { createVitePlugins } from './build/vite/plugin';
 // import { OUTPUT_DIR } from './build/constant';
 
 function pathResolve(dir: string) {
@@ -20,11 +20,11 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, root);
 
   // The boolean type read by loadEnv is a string. This function can be converted to boolean type
-  // const viteEnv = wrapperEnv(env);
+  const viteEnv = wrapperEnv(env);
 
   // const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY, VITE_DROP_CONSOLE, VITE_LEGACY } = viteEnv;
 
-  // const isBuild = command === 'build';
+  const isBuild = command === 'build';
 
   return {
     // base: VITE_PUBLIC_PATH,
@@ -94,11 +94,11 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     optimizeDeps: {
       // @iconify/iconify: The dependency is dynamically and virtually loaded by @purge-icons/generated, so it needs to be specified explicitly
       include: [
+        '@vue/runtime-core',
+        '@vue/shared',
         '@iconify/iconify',
         'ant-design-vue/es/locale/zh_CN',
-        'moment/dist/locale/zh-cn',
         'ant-design-vue/es/locale/en_US',
-        'moment/dist/locale/eu',
       ],
       exclude: ['vue-demi'],
     },

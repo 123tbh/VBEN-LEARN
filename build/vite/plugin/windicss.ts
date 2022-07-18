@@ -10,4 +10,3 @@ export function configWindiCssPlugin(): Plugin[] {
     },
   });
 }
-
